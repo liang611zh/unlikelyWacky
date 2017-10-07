@@ -7,7 +7,7 @@
  *
  * @author Kent Huang
  */
-class Flights extends CI_Model
+class Flight extends CI_Model
 {
 
 	//The flights we have
