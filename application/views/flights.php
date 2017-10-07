@@ -5,12 +5,12 @@
       <tr class="info">
         <th>Plane ID</th>
         <th>Departure Airport</th>
-        <th>Arrival Airport</th>
         <th>Departure Time</th>
+        <th>Arrival Airport</th>
         <th>Arrival Time</th>
       </tr>
       {flights}
-      <tr>
+      <tr title="Departure from {departureAirport} to {arrivalAirport}, arrival time is {arrivalTime}">
         <td>{planeId}</td>
         <td>{departureAirport}</td>
         <td>{departureTime}</td>
