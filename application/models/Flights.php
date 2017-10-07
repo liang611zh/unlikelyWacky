@@ -10,7 +10,7 @@
 class Flights extends CI_Model
 {
 
-	//this airplanes we own
+	//The flights we have
 	var $data = array(
 		'U001'	 => array('id'	 => 'U001', 
 						'planeId'	 => 'U1',
@@ -81,7 +81,7 @@ class Flights extends CI_Model
 	{
 		parent::__construct();
 
-		// inject each "record" key into the record itself, for ease of presentation
+		// Inject each "record" key into the record itself, for ease of presentation
 		foreach ($this->data as $key => $record)
 		{
 			$record['key'] = $key;
@@ -89,10 +89,10 @@ class Flights extends CI_Model
 		}
 	}
 
-	// retrieve a single flight by passing in the id, null if not found
-	//example call in controller :  $this->flights->get('U001');
+	// Retrieve a single flight by passing in the id, null if not found
+	//Example call in controller :  $this->flights->get('U001');
 	//
-	//the return-value printed by print_r() is shown below:
+	//The return-value printed by print_r() is shown below:
 	//
 	//Array ( [id] => U001 [planeId] => U1 [departureAirport] => YYD [departureTime] => 8:30 [arrivalAirport] => YPZ [arrivalTime] => 9:00 [key] => U001 ) 1
 	public function get($which)
@@ -100,8 +100,8 @@ class Flights extends CI_Model
 		return !isset($this->data[$which]) ? null : $this->data[$which];
 	}
 
-	// retrieve all of the flights
-	//example call in controller :  $this->flights->all();
+	// Retrieve all of the flights
+	//Example call in controller :  $this->flights->all();
 	public function all()
 	{
 		return $this->data;

@@ -10,7 +10,7 @@
 class Fleet extends CI_Model
 {
 
-	//this airplanes we own
+	//The airplanes we own
 	//
 	var $data = array(
 		'U1'	 => array('id'	 => 'U1', 'manufacturer'	 => 'Beechcraft',
@@ -26,7 +26,7 @@ class Fleet extends CI_Model
 	{
 		parent::__construct();
 
-		// inject each "record" key into the record itself, for ease of presentation
+		// Inject each "record" key into the record itself, for ease of presentation
 		foreach ($this->data as $key => $record)
 		{
 			$record['key'] = $key;
@@ -34,10 +34,10 @@ class Fleet extends CI_Model
 		}
 	}
 
-	// retrieve a single plane by passing in the id, null if not found
-	//example call in controller :  $this->fleet->get('U2');
+	// Retrieve a single plane by passing in the id, null if not found
+	//Example call in controller :  $this->fleet->get('U2');
 	//
-	//the return-value printed by print_r() is shown below:
+	//The return-value printed by print_r() is shown below:
 	//
 	//Array ( [id] => U2 [manufacturer] => Cessna [model] => Grand Caravan EX [key] => U2 ) 1
 	public function get($which)
@@ -45,8 +45,8 @@ class Fleet extends CI_Model
 		return !isset($this->data[$which]) ? null : $this->data[$which];
 	}
 
-	// retrieve all of the planes
-	//example call in controller :  $this->fleet->all();
+	// Retrieve all of the planes
+	//Example call in controller :  $this->fleet->all();
 	public function all()
 	{
 		return $this->data;
