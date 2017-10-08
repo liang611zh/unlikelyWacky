@@ -3,11 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 //for link to the navigation part 
 $config['menu_choices'] = array(
 	'menudata' => array(
-		array('name' => 'Home', 'link' => '/'),
-		array('name' => 'Fleet', 'link' => '/fleet'),
-		array('name' => 'Flights', 'link' => '/flights'),
-		array('name' => 'Info', 'link' => '/info'),
-		array('name' => 'About', 'link' => '/about')
+		array('name' => 'Home', 'link' => '/', 'icon' => 'fa-home'),
+		array('name' => 'Fleet', 'link' => '/fleet', 'icon' => 'fa-plane'),
+		array('name' => 'Flights', 'link' => '/flights', 'icon' => 'fa-list'),
+		array('name' => 'Info', 'link' => '/info', 'icon' => 'fa-info'),
+		array('name' => 'About', 'link' => '/about', 'icon' => 'fa-address-book-o')
 	)
 );
 
