@@ -1,14 +1,53 @@
-<h1>Welcome to CodeIgniter!</h1>
-
-<div id="body">
-	<p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
-
-	<p>If you would like to edit this page you'll find it located at:</p>
-	<code>application/views/welcome_message.php</code>
-
-	<p>The corresponding controller for this page is found at:</p>
-	<code>application/controllers/Welcome.php</code>
-
-	<p>If you are exploring CodeIgniter for the very first time, you should 
-		start by reading the <a href="http://www.codeigniter.com/user_guide/">User Guide</a>.</p>
+<div class="row">
+	<div class="col">
+		<div class="jumbotron jumbotron-fluid">
+		<h2 class="display-3 text-center">Unlikely Wacky</h2>
+		<hr class="hr-4">
+		<h5 class="text-muted text-center"> - It is unlikely we will get you there - <h5>
+		</div>
+	</div>
+</div>
+<div class="row">
+		<div class="col-md-4">
+			<div class="card">
+				<div class="card-header text-center bg-info text-light lead">
+					<i class="fa fa-plane fa-fw" aria-hidden="true"></i>
+						Flights
+					<i class="fa fa-plane fa-fw" aria-hidden="true"></i>
+				</div>
+				<div class="card-body">
+					<h1><small class="text-muted">Number of Flights: </small><small class="display-3">{number_flights}</small></h1>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="card">
+				<div class="card-header text-center bg-primary text-light lead">
+					<i class="fa fa-plane fa-suitcase" aria-hidden="true"></i>
+					Airports We Service
+					<i class="fa fa-plane fa-suitcase" aria-hidden="true"></i>
+				</div>
+				<div class="card-body">
+				<table>
+				{airport}
+				<tr title="Departure from {departureAirport} to {arrivalAirport}, arrival time is {arrivalTime}">
+					<td class="lead">{uniqueAirports}</td>
+				</tr>
+				{/airport}
+				</table>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="card">
+				<div class="card-header text-center bg-info text-light lead">
+					<i class="fa fa-plane fa-fw" aria-hidden="true"></i>
+					Our Fleet
+					<i class="fa fa-plane fa-fw" aria-hidden="true"></i>
+				</div>
+				<div class="card-body">
+					<h1><small class="text-muted">Number of Airplanes: </small><small class="display-3">{number_fleet}</small></h1>
+				</div>
+			</div>
+		</div>
 </div>
