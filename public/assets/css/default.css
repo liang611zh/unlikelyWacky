@@ -58,7 +58,7 @@ p.footer {
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: #fafafa;
+    background: #E6E6FA;
 }
 
 p {
@@ -75,16 +75,20 @@ a, a:hover, a:focus {
     transition: all 0.3s;
 }
 
+.jumbotron {
+	background: #D3C0FB;
+}
+
 #sidebar {
     /* don't forget to add all the previously mentioned styles here too */
-    background: #7386D5;
+    background: #A380EB;
     color: #fff;
     transition: all 0.3s;
 }
 
 #sidebar .sidebar-header {
     padding: 20px;
-    background: #6d7fcc;
+    background: #9370DB;
 }
 
 #sidebar ul.components {
@@ -160,6 +164,7 @@ ul ul a {
     display: block;
     font-size: 1.8em;
     margin-bottom: 5px;
+	width: 60px;
 }
 
 #sidebar ul li a i {
@@ -181,10 +186,19 @@ ul ul a {
     transform: translateX(50%);
 }
 
+#sidebarCollapse {
+	background-color: #7665CB;
+	border-color: #45007B;
+}
+#sidebarCollapse:hover {
+	background-color: #7159C7;
+	border-color: #4B0082;
+}
 #topbar {
 	margin-top: 8px;
 	margin-left: auto;
 	margine-righta; auto;
+	background-color: #9370DB;
 }
 
 a[data-toggle="collapse"] {

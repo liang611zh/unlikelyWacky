@@ -44,6 +44,10 @@ class Fleet extends CI_Model
 	{
 		return $this->data;
 	}
-    
+
+	public function countFleet()
+	{
+		return count($this->data);
+	}
 
 }

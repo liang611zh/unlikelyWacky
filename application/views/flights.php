@@ -1,7 +1,7 @@
 <div class="panel panel-default">
 	<div class="panel-heading">Flights</div>
 	<div class="panel-body">
-		<table class="table table-striped table-hover">
+		<table class="table table-striped table-hover table-responsive">
       <tr class="info">
         <th>Plane ID</th>
         <th>Departure Airport</th>
