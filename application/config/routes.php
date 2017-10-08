@@ -56,4 +56,6 @@ $route['translate_uri_dashes'] = FALSE;
 
 //index is the function in the flights controller
 $route['flights'] = 'flights/index';
-$route['fleet'] = 'fleets/index';
+
+//for displaying detail of single plane.
+$route['fleet/(:any)'] = 'fleet/show/index/$1';
