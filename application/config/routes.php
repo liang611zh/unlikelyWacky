@@ -54,3 +54,4 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 //index is the function in the flights controller
 $route['flights'] = 'flights/index';
+$route['fleet'] = 'fleets/index';
