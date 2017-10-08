@@ -104,7 +104,30 @@ class Flight extends CI_Model
 	//Example call in controller :  $this->flights->all();
 	public function all()
 	{
-        return $this->data;
-    }
-
+		return $this->data;
+	}
+	
+	// Retrieve the number of Flights
+	//Example call in controller:	$this->flights->countFlights();
+	public function countFlights()
+	{
+		return count($this->data);
+	}
+	
+	// Retrieve the all the unique Destinations airplanes fly to base on flight data
+	// Data references departureAiports and assumes base is included in departureAiports
+	//Example call in controller: $this->flights->unique Airports
+	public function uniqueAirports()
+	{
+		$airports = array_values(array_unique(array_column($this->data, 'departureAirport'), 0));
+		// need to rename the keys
+		$unique = array();
+		foreach($airports as $key=>$value) {
+			array_push($unique,
+				array(
+					"uniqueAirports" => $value)
+			);
+		}
+		return $unique;
+	}
 }

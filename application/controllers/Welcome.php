@@ -19,7 +19,11 @@ class Welcome extends Application
 	 */
 	public function index()
 	{
+		$this->data['pagetitle'] = 'Welcome To UW';
 		$this->data['pagebody'] = 'welcome_message';
+		$this->data['number_flights'] = $this->flight->countFlights();
+		$this->data['number_fleet'] = $this->fleet->countFleet();
+		$this->data['airport'] = $this->flight->uniqueAirports();
 		$this->render(); 
 	}
 

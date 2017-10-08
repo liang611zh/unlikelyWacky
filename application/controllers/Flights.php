@@ -23,6 +23,4 @@ class Flights extends Application {
 		$this->data['flights'] = $this->flight->all();
 		$this->render();
 	}
-
-
 }

@@ -1,11 +1,53 @@
-<h2>Welcome to Unlikely Wacky Airline</h2>
-<h5>It is unlikely we will get you there<h5>
-<p>Bacon ipsum dolor amet biltong pork chop pancetta, salami jowl turkey ham tongue chicken beef meatloaf landjaeger prosciutto bacon. Pancetta tail short loin kielbasa capicola meatball ham hock shank brisket venison prosciutto. Ham pig chuck, fatback corned beef burgdoggen pork short ribs ham hock bresaola. Meatloaf sausage tail strip steak rump jowl. Brisket salami ham hock leberkas cupim andouille. Leberkas doner brisket, picanha shankle porchetta turducken.
-
-Ground round tenderloin picanha biltong leberkas venison ham hock prosciutto flank. Jowl chuck venison, biltong flank alcatra fatback filet mignon andouille tail. Prosciutto biltong picanha, turducken ground round turkey salami hamburger pork belly. Doner short loin meatball pork filet mignon ham hock. Chuck burgdoggen short ribs hamburger salami strip steak sausage spare ribs rump pork loin. Venison pork belly ball tip drumstick swine.
-
-Andouille shank alcatra, sausage kevin corned beef ball tip prosciutto t-bone salami spare ribs bacon filet mignon. Andouille filet mignon beef prosciutto, burgdoggen tri-tip spare ribs doner chicken biltong tail. Tri-tip t-bone fatback shoulder venison sirloin shankle boudin. Cow tongue ground round pork loin flank salami, cupim brisket. Capicola hamburger porchetta, bacon short ribs tongue beef chicken rump short loin pig drumstick picanha. Swine burgdoggen chicken boudin drumstick cow, filet mignon salami.
-
-Ham hock kielbasa chicken venison pork belly shank swine capicola corned beef porchetta leberkas landjaeger pastrami turducken. Short loin shoulder burgdoggen drumstick. Sirloin t-bone pork loin cupim hamburger. Chuck strip steak meatloaf, doner burgdoggen frankfurter landjaeger beef ribs tail swine short ribs ham jerky tongue.
-
-Meatloaf ground round turducken chicken swine, sausage alcatra strip steak burgdoggen doner pork loin jowl ham chuck bresaola. Tail kevin doner spare ribs salami frankfurter ground round shankle tenderloin andouille. Boudin landjaeger pork shoulder jerky doner cow bresaola swine. Hamburger bresaola rump turducken ball tip kevin picanha, meatloaf kielbasa tri-tip alcatra. Ham tail tri-tip, meatball pork chop venison landjaeger flank kielbasa pork belly pork loin. Short ribs meatloaf ball tip, pig short loin jerky shoulder bacon burgdoggen boudin strip steak ham alcatra frankfurter shankle.</p>
+<div class="row">
+	<div class="col">
+		<div class="jumbotron jumbotron-fluid">
+		<h2 class="display-3 text-center">Unlikely Wacky</h2>
+		<hr class="hr-4">
+		<h5 class="text-muted text-center"> - It is unlikely we will get you there - <h5>
+		</div>
+	</div>
+</div>
+<div class="row">
+		<div class="col-md-4">
+			<div class="card">
+				<div class="card-header text-center bg-info text-light lead">
+					<i class="fa fa-plane fa-fw" aria-hidden="true"></i>
+						Flights
+					<i class="fa fa-plane fa-fw" aria-hidden="true"></i>
+				</div>
+				<div class="card-body">
+					<h1><small class="text-muted">Number of Flights: </small><small class="display-3">{number_flights}</small></h1>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="card">
+				<div class="card-header text-center bg-primary text-light lead">
+					<i class="fa fa-plane fa-suitcase" aria-hidden="true"></i>
+					Airports We Service
+					<i class="fa fa-plane fa-suitcase" aria-hidden="true"></i>
+				</div>
+				<div class="card-body">
+				<table>
+				{airport}
+				<tr title="Departure from {departureAirport} to {arrivalAirport}, arrival time is {arrivalTime}">
+					<td class="lead">{uniqueAirports}</td>
+				</tr>
+				{/airport}
+				</table>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="card">
+				<div class="card-header text-center bg-info text-light lead">
+					<i class="fa fa-plane fa-fw" aria-hidden="true"></i>
+					Our Fleet
+					<i class="fa fa-plane fa-fw" aria-hidden="true"></i>
+				</div>
+				<div class="card-body">
+					<h1><small class="text-muted">Number of Airplanes: </small><small class="display-3">{number_fleet}</small></h1>
+				</div>
+			</div>
+		</div>
+</div>
