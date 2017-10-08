@@ -15,12 +15,29 @@ class Show extends Application
 
 		
 		/*data of selected plane.*/
-		$this->data['plane'] = $this->fleet->get($key);
+		$plane = $this->fleet->get($key);
 
 		/*set pagetitle to the id of the plane.*/
-		$this->data['pagetitle'] = $this->data['plane']['id'];
+		$this->data['pagetitle'] = $plane['id'];
 
 		$this->data['pagebody'] = 'fleet/plane';
+
+		$table_open = '<table class="table table-striped table-hover">';
+
+		$table_content = "";
+
+		foreach($plane as $key => $val) {
+			$table_content .= "<tr>
+          							<th>$key</th>
+          							<td>$val</td>
+        						</tr>";
+		}
+
+		$table_close = '</table>'; 
+
+		$this->data['singlePlaneTable'] = $table_open .$table_content. $table_close;
+
+
 
 		$this->render(); 
 	}
