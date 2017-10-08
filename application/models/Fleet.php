@@ -44,5 +44,6 @@ class Fleet extends CI_Model
 	{
 		return $this->data;
 	}
+    
 
 }

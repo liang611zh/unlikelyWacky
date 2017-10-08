@@ -104,7 +104,7 @@ class Flight extends CI_Model
 	//Example call in controller :  $this->flights->all();
 	public function all()
 	{
-		return $this->data;
-	}
+        return $this->data;
+    }
 
 }
