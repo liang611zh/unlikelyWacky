@@ -20,31 +20,31 @@
             <!-- Sidebar Links -->
             <ul class="list-unstyled components">
                 <li>
-                    <a href="/">
+                    <a href="Home">
                         <i class="fa fa-home fa-fw" aria-hidden="true"></i>
                         Home
                     </a>
                 </li>
                 <li>
-                    <a href="fleet">
+                    <a href="Fleet">
                         <i class="fa fa-plane fa-fw" aria-hidden="true"></i>
                         Fleet
                     </a>
                 </li>
                 <li>
-                    <a href="flights">
+                    <a href="Flights">
                         <i class="fa fa-list fa-fw" aria-hidden="true"></i>
                         Flights
                     </a>
                 </li>
 				<li>
-                    <a href="info">
+                    <a href="Info">
                         <i class="fa fa-info fa-fw" aria-hidden="true"></i>
                         Info
                     </a>
                 </li>
 				<li>
-				    <a href="about">
+				    <a href="About">
                         <i class="fa fa-address-book-o fa-fw" aria-hidden></i>
                         About
                     </a>
