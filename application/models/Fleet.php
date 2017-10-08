@@ -25,13 +25,6 @@ class Fleet extends CI_Model
 	public function __construct()
 	{
 		parent::__construct();
-
-		// Inject each "record" key into the record itself, for ease of presentation
-		foreach ($this->data as $key => $record)
-		{
-			$record['key'] = $key;
-			$this->data[$key] = $record;
-		}
 	}
 
 	// Retrieve a single plane by passing in the id, null if not found
