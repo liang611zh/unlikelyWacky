@@ -11,57 +11,19 @@
 	</head>
 	<body>
 		<div class="wrapper">
-			<nav id="sidebar" class="active">
-            <!-- Sidebar Header -->
-            <div class="sidebar-header">
-                <h2>Unlikely Wacky</h2>
-                <strong>UW</strong>
-            </div>
-            <!-- Sidebar Links -->
-            <ul class="list-unstyled components">
-                <li>
-                    <a href="Home">
-                        <i class="fa fa-home fa-fw" aria-hidden="true"></i>
-                        Home
-                    </a>
-                </li>
-                <li>
-                    <a href="Fleet">
-                        <i class="fa fa-plane fa-fw" aria-hidden="true"></i>
-                        Fleet
-                    </a>
-                </li>
-                <li>
-                    <a href="Flights">
-                        <i class="fa fa-list fa-fw" aria-hidden="true"></i>
-                        Flights
-                    </a>
-                </li>
-				<li>
-                    <a href="Info">
-                        <i class="fa fa-info fa-fw" aria-hidden="true"></i>
-                        Info
-                    </a>
-                </li>
-				<li>
-				    <a href="About">
-                        <i class="fa fa-address-book-o fa-fw" aria-hidden></i>
-                        About
-                    </a>
-				</li>
-            </ul>
-        </nav>
-		<div class="container-fluid">
-			<nav id="topbar" class="navbar navbar-light">
-				<button type="button" id="sidebarCollapse" class="btn btn-primary navbar-btn">
-					<i class="fa fa-bars" aria-hidden="true"></i>
-				</button>
-			</nav>
-			<div id="content" class="row">
-				<div class="col">
-					{content}
-					<!--<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. 
-						{ci_version}</p>-->
+			{menubar}
+			<div class="container-fluid">
+				<nav id="topbar" class="navbar navbar-light">
+					<button type="button" id="sidebarCollapse" class="btn btn-primary navbar-btn">
+						<i class="fa fa-bars" aria-hidden="true"></i>
+					</button>
+				</nav>
+				<div id="content" class="row">
+					<div class="col">
+						{content}
+						<!--<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. 
+							{ci_version}</p>-->
+					</div>
 				</div>
 			</div>
 		</div>
