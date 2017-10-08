@@ -7,7 +7,7 @@ class Show extends Application
 
 	/**
 	 * Show Page for the Fleet controller.
-	 * To display detail of the clicked plane.
+	 * To display detail of the single clicked plane.
 	 *
 	 */
 	public function index($key)
@@ -22,8 +22,10 @@ class Show extends Application
 
 		$this->data['pagebody'] = 'fleet/plane';
 
+		/*table opening*/
 		$table_open = '<table class="table table-striped table-hover">';
 
+		/*table content ;a row shown as :   propertyName : propertyValue*/
 		$table_content = "";
 
 		foreach($plane as $key => $val) {
@@ -33,8 +35,11 @@ class Show extends Application
         						</tr>";
 		}
 
+		/*table closing*/
 		$table_close = '</table>'; 
 
+
+		/*the table to display in the fleet/plane view*/
 		$this->data['singlePlaneTable'] = $table_open .$table_content. $table_close;
 
 
