@@ -5,7 +5,7 @@
             <a href="Info/flights">Flights Information</a>
         </li>
         <li>
-            <a href="Info/fleets">Fleet Information</a>
+            <a href="Info/fleet">Fleet Information</a>
         </li>
     
     </ul>
