@@ -29,7 +29,7 @@ class Info extends Application {
         echo json_encode($this->flight->all(), JSON_PRETTY_PRINT);
     }
     
-    public function fleets()   
+    public function fleet()   
     {
         header('Content-Type: application/json');
         echo json_encode($this->fleet->all(), JSON_PRETTY_PRINT);
