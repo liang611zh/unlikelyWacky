@@ -18,7 +18,7 @@ class Show extends Application
 		$plane = $this->fleet->get($key);
 
 		/*set pagetitle to the id of the plane.*/
-		$this->data['pagetitle'] = $plane['id'];
+		$this->data['pagetitle'] = $plane->id;
 
 		$this->data['pagebody'] = 'fleet/plane';
 
