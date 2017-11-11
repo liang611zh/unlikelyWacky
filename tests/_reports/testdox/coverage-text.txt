@@ -1,12 +1,12 @@
 
 
 Code Coverage Report:       
-  2017-11-11 08:31:00       
+  2017-11-11 08:35:52       
                             
  Summary:                   
   Classes:  0.00% (0/134)   
   Methods:  0.07% (1/1536)  
-  Lines:    0.05% (11/23602)
+  Lines:    0.05% (11/23376)
 
 @CodeIgniter.Libraries::CI_Log
   Methods:   0.00% ( 0/ 5)   Lines:   8.62% (  5/ 58)
