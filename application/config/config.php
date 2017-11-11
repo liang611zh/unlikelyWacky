@@ -7,7 +7,9 @@ $config['menu_choices'] = array(
 		array('name' => 'Fleet', 'link' => '/fleet', 'icon' => 'fa-plane'),
 		array('name' => 'Flights', 'link' => '/flights', 'icon' => 'fa-list'),
 		array('name' => 'Info', 'link' => '/info', 'icon' => 'fa-info'),
-		array('name' => 'About', 'link' => '/about', 'icon' => 'fa-address-book-o')
+		array('name' => 'About', 'link' => '/about', 'icon' => 'fa-address-book-o'),
+		array('name' => 'Guest', 'link' => '/roles/actor/Guest', 'icon' => 'fa-users'),
+		array('name' => 'Owner', 'link' => '/roles/actor/Owner', 'icon' => 'fa-key')
 	)
 );
 
