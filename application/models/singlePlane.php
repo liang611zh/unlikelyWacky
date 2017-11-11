@@ -6,6 +6,8 @@
  *
  * @author Kent Huang
  */
+require_once '../application/core/Entity.php';
+
 class singlePlane extends Entity {
 
 	protected $id;
@@ -22,39 +24,88 @@ class singlePlane extends Entity {
 
 
 	public function setId($value) {
-		$this->id = $value;
+        if((preg_match('/^(U|u)([a-z A-Z0-9])*$/', $value) === 1)     &&
+            (strlen($value) < 5)){  
+            $this->id = $value;
+            return true;
+        } else {
+            return false;
+        }
 	}
 
 	public function setManufacturer($value) {
-		$this->manufacturer = $value;
+        if((preg_match('/^[a-z A-Z0-9]+$/', $value) === 1) &&
+            (strlen($value) < 65)){
+            $this->manufacturer = $value;
+            return true;
+        } else {
+            return false;   
+        }
+        
 	}
 
 	public function setModel($value) {
-		$this->model = $value;
+        if((preg_match('/^[a-z A-Z0-9]+$/', $value) === 1) &&
+            (strlen($value) < 65)){
+            $this->model = $value;
+            return true;
+        } else {
+            return false;
+        }
 	}
 
 	public function setPrice($value) {
-		$this->price = $value;
+        if(is_numeric($value) && $value > 0){
+            $this->price = $value;
+            return true;
+        } else {
+            return false;
+        }
 	}
 
 	public function setSeats($value) {
-		$this->seats = $value;
+        if(is_numeric($value) && $value > 0){
+            $this->seats = $value;
+            return true;
+        } else {
+            return false;
+        }
 	}
 
 	public function setReach($value) {
-		$this->reach = $value;
+        if(is_numeric($value) && $value > 0){
+            $this->reach = $value;
+            return true;
+        } else {
+            return false;
+        }
 	}
 
 	public function setCruise($value) {
-		$this->cruise = $value;
+        if(is_numeric($value) && $value > 0){
+            $this->cruise = $value;
+            return true;
+        } else {
+            return false;
+        }
 	}
 
 	public function setTakeoff($value) {
-		$this->takeoff = $value;
+        if(is_numeric($value) && $value > 0){
+            $this->takeoff = $value;
+            return true;
+        } else {
+            return false;
+        }
 	}
 
 	public function setHourly($value) {
-		$this->hourly = $value;
+        if(is_numeric($value) && $value > 0){
+            $this->hourly = $value;
+            return true;
+        } else {
+            return false;
+        }
 	}
 
 

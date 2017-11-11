@@ -6,6 +6,8 @@
  *
  * @author Kent Huang
  */
+require_once '../application/core/Entity.php';
+    
 class singleFlight extends Entity {
 
 	protected $id;
@@ -14,41 +16,65 @@ class singleFlight extends Entity {
 	protected $departureTime;
 	protected $arrivalAirport;
 	protected $arrivalTime;
-	protected $key;
 
 
 	public function setId($value) {
-		$this->id = $value;
+        if((preg_match('/^^(U|u)([a-z A-Z0-9])*$/', $value) === 1) &&
+            (strlen($value) == 4)){
+            $this->id = $value;
+            return true;
+        } else {
+            return false;
+        }
 	}
 
 	public function setPlaneId($value) {
-		$this->planeId = $value;
+        if((preg_match('/^(U|u)([a-z A-Z0-9])*$/', $value) === 1) &&
+            (strlen($value) < 5)){        
+            $this->planeId = $value;
+            return true;
+        } else {
+            return false;
+        }
 	}
 
 	public function setDepartureAirport($value) {
-		$this->departureAirport = $value;
+        if((preg_match('/^[a-zA-Z0-9]+$/', $value) === 1) &&
+            (strlen($value) == 3)){ 
+            $this->departureAirport = $value;
+            return true;
+        } else {
+            return false;
+        }
 	}
 
 	public function setDepartureTime($value) {
-		$this->departureTime = $value;
+        if(preg_match('/^([01]?[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?$/', $value) === 1) {
+            $this->departureTime = $value;
+            return true;
+        } else {
+            return false;
+        }
 	}
 
 	public function setArrivalAirport($value) {
-		$this->arrivalAirport = $value;
+        if((preg_match('/^[a-zA-Z0-9]+$/', $value) === 1) &&
+            (strlen($value) == 3)){
+            $this->arrivalAirport = $value;
+            return true;
+        } else {
+            return false;
+        }
 	}
 
 	public function setArrivalTime($value) {
-		$this->arrivalTime = $value;
+        if(preg_match('/^([01]?[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?$/', $value) === 1) {
+            $this->arrivalTime = $value;
+            return true;
+        } else {
+            return false;
+        }
 	}
-
-	public function setKey($value) {
-		$this->key = $value;
-	}
-
-
-
-
-
 
 }
 
