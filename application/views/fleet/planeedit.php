@@ -5,7 +5,7 @@
             {id}<br>
             {recognizedPlane}<br>
             
-            {fmanufacturer}<br>
+<!--             {fmanufacturer}<br>
             {fmodel}<br>
             {fprice}<br>
             {fseats}<br>
@@ -13,10 +13,10 @@
             {fcruise}<br>
             {ftakeoff}<br>
             {fhourly}<br>
-            {zsubmit}<br>
+            {zsubmit}<br> -->
         </form>
         {error}
 
-        <a href="/fleet/cancel"><input type="button" value="Cancel"/></a>
+        <a href="/fleet/show/cancel"><input type="button" value="Cancel"/></a>
 	</div>
 </div>
