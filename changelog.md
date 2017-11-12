@@ -1,5 +1,8 @@
 Changelog
 
+### #4 2017-11-11 - Kabir Cahill
+- added fleet edit page
+
 ### #3 2017-11-11 - Kent Huang
 - added model for shared planes in the wacky server
 
