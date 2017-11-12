@@ -1,7 +1,7 @@
 <div class="panel panel-default">
 	<div class="panel-heading">{pagetitle}</div>
 	<div class="panel-body">
-        <form role="form" action="/fleet/submit" method="post">
+        <form role="form" action="/fleet/show/submit" method="post">
             {fmanufacturer}<br>
             {fmodel}<br>
             {fprice}<br>

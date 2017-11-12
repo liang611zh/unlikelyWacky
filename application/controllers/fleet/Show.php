@@ -117,12 +117,12 @@ class Show extends Application
         {
             if (empty($plane->id))
             {
-                $plane->id = $this->tasks->highest() + 1;
-                $this->tasks->add($plane);
+                $plane->id = $this->fleet->highest() + 1;
+                $this->fleet->add($plane);
                 $this->alert('Plane ' . $plane->id . ' added', 'success');
             } else
             {
-                $this->tasks->update($plane);
+                $this->fleet->update($plane);
                 $this->alert('Plane ' . $plane->id . ' updated', 'success');
             }
         } else
@@ -131,4 +131,11 @@ class Show extends Application
         }
         $this->showit();
     }
+
+                    // build a suitable error mesage
+        private function alert($message) {
+            $this->load->helper('html');        
+            $this->data['error'] = heading($message,3);
+        }
+
 }
