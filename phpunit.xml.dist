@@ -20,6 +20,8 @@
     </testsuites>
     <logging>
         <log type="coverage-text" target="tests/_reports/testdox/coverage-text.txt" showUncoveredFiles="false"/>
+        <log type="coverage-html" target="/tmp/report" lowUpperBound="35"
+       highLowerBound="70"/>
     </logging>
     <filter>
         <whitelist>
