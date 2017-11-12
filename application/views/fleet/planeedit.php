@@ -2,6 +2,9 @@
 	<div class="panel-heading">{pagetitle}</div>
 	<div class="panel-body">
         <form role="form" action="/fleet/show/submit" method="post">
+            {id}<br>
+            {recognizedPlane}<br>
+            
             {fmanufacturer}<br>
             {fmodel}<br>
             {fprice}<br>

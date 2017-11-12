@@ -68,6 +68,7 @@ class Show extends Application
 
         $this->session->set_userdata('plane', $plane);
 
+
         $this->showit();
     }
 
@@ -82,9 +83,13 @@ class Show extends Application
         if ( ! isset($this->data['error']))
             $this->data['error'] = '';
 
+        
+
         $fields = array(
+            'id'  => form_label('id: ') . form_input('id', $plane->id),
+            'recognizedPlane' => form_label('recognized plane:').form_dropdown('wackyid',$this->airplanesWacky->getAllid(), $plane->wackyid),
             'fmanufacturer'  => form_label('Manufacturer') . form_input('manufacturer', $plane->manufacturer),
-            'fmodel'      => form_label('Model') . form_input('size', $plane->model),
+            'fmodel'      => form_label('Model') . form_input(array('name'=>'size','value' => $plane->model, 'readonly'=>'readonly')),
             'fprice'     => form_label('Price') . form_input('price', $plane->price),
             'fseats'     => form_label('Seats') . form_input('seats', $plane->seats),
             'freach'     => form_label('Reach') . form_input('reach', $plane->reach),

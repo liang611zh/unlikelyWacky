@@ -24,15 +24,21 @@ class AirplanesWacky extends My_Model {
 		
 		foreach ($allwackyplanesjs as $oj) {
 			//var_dump($oj);
-			$this->allwackyplanecode[] = $oj->id;
+			$this->allwackyplanecode[$oj->id] = $oj->id;
 			$this->allwackyplanes[$oj->id] = $oj;
 
 		}
-		//var_dump($allwackyplanes);
+		//var_dump($this->allwackyplanecode);
 
 
 
 
+	}
+
+
+
+	public function getAllid() {
+		return $this->allwackyplanecode;
 	}
 
 	/*

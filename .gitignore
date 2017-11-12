@@ -6,7 +6,6 @@
 !*/cache/.htaccess
 /nbproject/private/
 
-*/data/*
 /tmp/*
 .idea/*
 
