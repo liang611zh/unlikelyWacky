@@ -88,15 +88,15 @@ class Show extends Application
         $fields = array(
             'id'  => form_label('id: ') . form_input('id', $plane->id),
             'recognizedPlane' => form_label('recognized plane:').form_dropdown('wackyid',$this->airplanesWacky->getAllid(), $plane->wackyid),
-            'fmanufacturer'  => form_label('Manufacturer') . form_input('manufacturer', $plane->manufacturer),
-            'fmodel'      => form_label('Model') . form_input(array('name'=>'size','value' => $plane->model, 'readonly'=>'readonly')),
-            'fprice'     => form_label('Price') . form_input('price', $plane->price),
-            'fseats'     => form_label('Seats') . form_input('seats', $plane->seats),
-            'freach'     => form_label('Reach') . form_input('reach', $plane->reach),
-            'fcruise'     => form_label('Cruise') . form_input('cruise', $plane->cruise),
-            'ftakeoff'     => form_label('Takeoff') . form_input('takeoff', $plane->takeoff),
-            'fhourly'     => form_label('Hourly') . form_input('hourly', $plane->hourly),
-            'zsubmit'    => form_submit('submit', 'Update the plane'),
+            // 'fmanufacturer'  => form_label('Manufacturer') . form_input('manufacturer', $plane->manufacturer),
+            // 'fmodel'      => form_label('Model') . form_input(array('name'=>'size','value' => $plane->model, 'readonly'=>'readonly')),
+            // 'fprice'     => form_label('Price') . form_input('price', $plane->price),
+            // 'fseats'     => form_label('Seats') . form_input('seats', $plane->seats),
+            // 'freach'     => form_label('Reach') . form_input('reach', $plane->reach),
+            // 'fcruise'     => form_label('Cruise') . form_input('cruise', $plane->cruise),
+            // 'ftakeoff'     => form_label('Takeoff') . form_input('takeoff', $plane->takeoff),
+            // 'fhourly'     => form_label('Hourly') . form_input('hourly', $plane->hourly),
+            // 'zsubmit'    => form_submit('submit', 'Update the plane'),
         );
         $this->data = array_merge($this->data, $fields);
 
@@ -141,6 +141,12 @@ class Show extends Application
         private function alert($message) {
             $this->load->helper('html');        
             $this->data['error'] = heading($message,3);
+        }
+
+                        // Forget about this edit
+        function cancel() {
+            $this->session->unset_userdata('plane');
+            redirect('/fleet');
         }
 
 }
