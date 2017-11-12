@@ -20,19 +20,29 @@ class Flights extends Application {
 	{
 		$role = $this->session->userdata('userrole');
 
+       	$this->data['flights'] = $this->flight->all();
 		$this->data['pagetitle'] = 'Scheduled Flights ('. $role . ')';
 		$this->data['pagebody'] = 'flights';
-		$this->data['flights'] = $this->flight->all();
-
         if ($role == ROLE_OWNER){
-       		$this->data['pagination'] = $this->parser->parse('itemadd',[], true);       	 		
+       		$this->data['pagination'] = $this->parser->parse('itemadd',[], true);
+			$this->data['pagebody'] = 'flightadmin';
     	}elseif($role == ROLE_GUEST){
        		$this->data['pagination'] = $this->parser->parse('emptydiv',[], true);
+			$this->data['pagebody'] = 'flights';
     	}
-    	$this->render();
+		$this->render();
 	}
 
 	public function add()
+	{
+		$role = $this->session->userdata('userrole');
+
+		$this->data['pagetitle'] = 'Add New Schedule ('. $role . ')';
+		$this->data['pagebody'] = 'addflights';
+    	$this->render();
+	}
+
+	public function edit()
 	{
 		$role = $this->session->userdata('userrole');
 
