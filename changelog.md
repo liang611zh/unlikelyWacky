@@ -1,5 +1,9 @@
 Changelog
 
+### #3 2017-11-11 - Kent Huang
+- added model for shared planes in the wacky server
+
+
 ### #2 2017-11-09 - Kent Huang
 - added singleFlight & singlePlane models
 - added csv data gitignore
