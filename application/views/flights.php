@@ -1,6 +1,7 @@
 <div class="panel panel-default">
 	<div class="panel-heading">{pagetitle}</div>
 	<div class="panel-body">
+    {pagination}
 		<table class="table table-striped table-hover table-responsive">
       <tr class="info">
         <th>Plane ID</th>
