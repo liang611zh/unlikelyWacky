@@ -29,6 +29,9 @@ Group Unlikely
 -Added ajax controller for checking wacky data
 -Added Roles controller
 
+### #9 2017-11-12 - Victor Zhao
+- added flight page drop down list for select plane id
+
 ### #8 2017-11-12 - Victor Zhao
 - added flight page edit schedule
 - added flight page add schedule

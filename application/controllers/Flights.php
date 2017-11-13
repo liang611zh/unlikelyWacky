@@ -108,7 +108,7 @@ class Flights extends Application {
 			                  'ZST' => 'ZST',
 			                );
         $fields = array(
-            'id'  => form_label('Plane id: ') . form_input('planeId', $pa->planeId,['class' => 'form-control']),
+            'id'  => form_label('Plane id: ') . form_dropdown('planeId',$this->fleet->allid(),$pa->planeId,['class' => 'form-control']),
             'fdepartureAirport'  => form_label('Departure Airport') . form_dropdown('departureAirport', $options, $pa->departureAirport,['class' => 'form-control']),
 			'fdepartureTime'  => form_label('Departure Time') . form_input('departureTime', $pa->departureTime,['class' => 'form-control']),
             'farrivalAirport'  => form_label('Arrival Airport') . form_dropdown('arrivalAirport', $options, $pa->arrivalAirport,['class' => 'form-control']),
