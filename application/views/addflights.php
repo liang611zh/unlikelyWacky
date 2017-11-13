@@ -10,6 +10,6 @@
             {fsubmit}<br>
 
     </form>
-     <a href="cancel"><button class="btn btn-danger btn-lg btn-block">Cancel</button></a>
+     <a href="cancel"><input type="buton" class="btn btn-danger btn-lg btn-block" value="Cancel"></a>
   </div>
 </div>
