@@ -20,6 +20,19 @@ class Fleet extends CSV_Model
 		return count($this->all());
 	}
 
+//get all fleets id
+    public function allid()
+    {
+
+        $this->allfleetcode = array();
+        $allfleets = $this->all();
+
+        foreach ($allfleets as $oj) {
+            //var_dump($oj);
+            $this->allfleetcode[$oj->id] = $oj->id;}
+
+        return $this->allfleetcode;
+    }
     // provide form validation rules
 
     public function rules()
