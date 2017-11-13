@@ -19,5 +19,6 @@
 			</a>
 		</li>
 		{/menudata}
+    </li>   
 	</ul>
 </nav>

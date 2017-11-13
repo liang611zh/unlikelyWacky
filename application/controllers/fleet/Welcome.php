@@ -13,13 +13,19 @@ class Welcome extends Application
 	public function index()
 	{
 
-		$this->data['pagetitle'] = 'Fleet';
+		$role = $this->session->userdata('userrole');
+		$this->data['pagetitle'] = 'Fleet ('. $role . ')';
 
 		/*retrieve data of all the planes.*/
 		$this->data['planes'] = $this->fleet->all();
 
-		$this->data['pagebody'] = 'fleet/fleetindex';
-		$this->render(); 
+		if($role == ROLE_OWNER) {
+            $this->data['pagebody'] = 'fleet/fleetindexx';
+            $this->data['add'] = $this->parser->parse('fleet/addnav',[], true);
+        } else {
+            $this->data['pagebody'] = 'fleet/fleetindex';
+        }
+		$this->render();
 	}
 
 }

@@ -58,4 +58,7 @@ $route['translate_uri_dashes'] = FALSE;
 $route['flights'] = 'flights/index';
 
 //for displaying detail of single plane.
+$route['fleet/delete/(:any)'] = 'fleet/delete/index/$1';
+$route['fleet/add'] = 'fleet/add/index';
+$route['fleet/edit/(:any)'] = 'fleet/show/edit/$1';
 $route['fleet/(:any)'] = 'fleet/show/index/$1';

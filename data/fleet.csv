@@ -1,0 +1,4 @@
+id,wackyid,manufacturer,model,price,seats,reach,cruise,takeoff,hourly
+U1,baron,Beechcraft,Baron,1350,4,1948,373,701,340
+U2,caravan,Cessna,"Grand Caravan EX",2300,14,1689,340,660,389
+U3,citation,Cessna,"Citation M2",3200,7,1550,748,978,1122

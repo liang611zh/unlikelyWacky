@@ -1,0 +1,1 @@
+<a href="/fleet/add"><input type="button" class="btn btn-success" value="Add plane"/></a>

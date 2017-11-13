@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Info extends Application {
+class FleetAjax extends Application {
 	/**
 	 * Index Page for this controller.
 	 *
@@ -18,22 +18,16 @@ class Info extends Application {
 	 */
 	public function index()
 	{
-		$this->data['pagetitle'] = 'Information/Service';
-		$this->data['pagebody'] = 'info';
-		$this->render();
+		redirect('/fleet');
 	}
     
-    public function flights()   
+    public function wackyPlane($id)   
     {
-        header('Content-Type: application/json');
-        echo json_encode($this->flight->all(), JSON_PRETTY_PRINT);
+        
+        
+        echo $this-> airplanesWacky->getPlaneTableById($id);
     }
     
-    public function fleet()   
-    {
-        header('Content-Type: application/json');
-        echo json_encode($this->fleet->all(), JSON_PRETTY_PRINT);
-    }
 
 
 }
