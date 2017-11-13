@@ -1,4 +1,41 @@
 Changelog
+Group Unlikely
+
+### Team member:
+-Kent
+-Kabir
+-Gabriel
+-Paul
+-Victor
+
+### Group Component
+#Models
+-Added SingleFlight
+-Added SinglePlane
+-Added Wacky Model
+-Modified Fleet model
+-Modified Flight model add searching function
+-Move data to csv file
+
+#View
+-Added fleet edit/add view
+-Added flight edit/add view
+-Added booking view
+-Added flight/fleet admin view
+
+#Controller
+-Modified flight controller
+-Modified fleet controller
+-Added ajax controller for checking wacky data
+-Added Roles controller
+
+### #8 2017-11-12 - Victor Zhao
+- added flight page edit schedule
+- added flight page add schedule
+- added flight page delete schedule
+- modified flight page and fleet page layout css
+- added role switch
+- added sessions
 
 ### #7 2017-11-12 - Paul
 - added unit test for single planes

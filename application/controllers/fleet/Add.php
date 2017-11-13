@@ -42,9 +42,9 @@ class Add extends Application
             $this->data['error'] = '';
 
         $fields = array(
-            'id'  => form_label('id: ') . form_input('id', $plane->id),
-            'recognizedPlane' => form_label('recognized plane:').form_dropdown('wackyid',$this->airplanesWacky->getAllid(), $plane->wackyid, 'id="wackyselect"'),
-             'zsubmit'    => form_submit('submit', 'Add the plane'),
+            'id'  => form_label('id: ') . form_input('id', $plane->id,['class' => 'form-control']),
+            'recognizedPlane' => form_label('recognized plane:').form_dropdown('wackyid',$this->airplanesWacky->getAllid(), $plane->wackyid, 'id="wackyselect"',['class' => 'form-control']),
+             'zsubmit'    => form_submit('submit', 'Add the plane',['class' => 'btn btn-success']),
         );
         $this->data = array_merge($this->data, $fields);
 
