@@ -1,5 +1,12 @@
 Changelog
 
+### #7 2017-11-12 - Paul
+- added unit test for single planes
+- added unit test for single flights
+- added unit test for business rule conformation
+- added unit test for Fleet model
+- added unit test for plane/server verification
+
 ### #6 2017-11-12 - Gabriel
 - added Booking Search on welcome page
 - added function to search for flights in welcome controller and flight model
