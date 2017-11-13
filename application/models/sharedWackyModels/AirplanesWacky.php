@@ -64,8 +64,53 @@ class AirplanesWacky extends My_Model {
 	*/
 	public function getPlaneById($id) {
 		$oneplane = $this->allwackyplanes[$id];
-		
 		return $oneplane;
+	}
+
+	public function getPlaneById_Remove_id_key($id) {
+		$oneplane = $this->allwackyplanes[$id];
+
+		foreach ($oneplane as $key => $value) {
+			if($key == "id") {
+				$oneplane->wackyid = $value;
+
+			}
+		}
+
+
+		
+		//var_dump($oneplane);
+		return $oneplane;
+	}
+
+	public function getPlaneTableById($id) {
+		$oneplane = $this->allwackyplanes[$id];
+
+		/*table opening*/
+        $infotable_open = '<table class="table table-striped table-hover">';
+
+        /*table content ;a row shown as :   propertyName : propertyValue*/
+        $infotable_content = "";
+
+        foreach($oneplane as $key => $val) {
+
+            //exclude id row; because it causes confusion
+            if($key == 'id') {
+                continue;
+            }
+
+            $infotable_content .= "<tr>
+                                    <th>$key</th>
+                                    <td>$val</td>
+                                </tr>";
+        }
+
+        /*table closing*/
+        $infotable_close = '</table>';
+
+        $infotable = $infotable_open .$infotable_content. $infotable_close;
+		
+		return $infotable;
 	}
 
 
