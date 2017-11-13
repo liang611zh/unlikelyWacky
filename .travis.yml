@@ -1,0 +1,5 @@
+language: php
+php:
+  - '7.1'
+    # Commands you want to run that will verify your build.
+script: phpunit
