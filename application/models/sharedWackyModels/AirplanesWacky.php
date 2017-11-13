@@ -16,8 +16,28 @@ class AirplanesWacky extends My_Model {
 	*/
 	public function __construct() {
 
-		$response = file_get_contents('https://wacky.jlparry.com/info/airplanes/');
-
+		 function get_url_contents($url){  
+		  if (function_exists('file_get_contents')) {  
+		    $result = @file_get_contents($url);  
+		 }  
+		  if ($result == '') {  
+		    $ch = curl_init();  
+		    $timeout = 30;  
+		    curl_setopt($ch, CURLOPT_URL, $url);  
+		    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+		    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+		    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+		    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+		    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);  
+		    $result = curl_exec($ch);  
+		    curl_close($ch);  
+		  }  
+		  return $result;  
+		}
+		//$response = file_get_contents('https://wacky.jlparry.com/info/airplanes/');
+		$url='https://wacky.jlparry.com/info/airplanes/';
+		$response = get_url_contents($url);
+		
 		$this->allwackyplanecode = array();
 		$this->allwackyplanes = array();
 		$allwackyplanesjs = json_decode($response);
@@ -31,11 +51,7 @@ class AirplanesWacky extends My_Model {
 		//var_dump($this->allwackyplanecode);
 
 
-
-
 	}
-
-
 
 	public function getAllid() {
 		return $this->allwackyplanecode;
