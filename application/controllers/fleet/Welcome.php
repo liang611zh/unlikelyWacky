@@ -19,8 +19,12 @@ class Welcome extends Application
 		/*retrieve data of all the planes.*/
 		$this->data['planes'] = $this->fleet->all();
 
-		$this->data['pagebody'] = 'fleet/fleetindex';
-		$this->render(); 
+		if($role == ROLE_OWNER) {
+            $this->data['pagebody'] = 'fleet/fleetindexx';
+        } else {
+            $this->data['pagebody'] = 'fleet/fleetindex';
+        }
+		$this->render();
 	}
 
 }

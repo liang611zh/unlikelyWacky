@@ -8,7 +8,7 @@
  */
 require_once '../application/core/Entity.php';
 
-class singlePlane extends Entity {
+class SinglePlane extends Entity {
 
 	protected $id;
 	protected $manufacturer;

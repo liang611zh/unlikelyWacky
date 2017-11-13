@@ -81,6 +81,9 @@ class SingleFlightTest extends PHPUnit_Framework_TestCase
     public function testDepartureTimeInvalidTime(){
         $this->assertEquals(false, $this->singleFlight->setDepartureTime("99:99"));
     }
+    public function testDepartureBeforeEight(){
+        $this->assertEquals(false, $this->singleFlight->setDepartureTime("7:59"));
+    }
     
     //-----test setArrivalAirport-----//
     public function testsetArrivalAirportBasic(){
@@ -105,5 +108,8 @@ class SingleFlightTest extends PHPUnit_Framework_TestCase
     }
     public function testArrivalTimeInvalidTime(){
         $this->assertEquals(false, $this->singleFlight->setArrivalTime("99:99"));
+    }
+    public function testArrivalAfterTen(){
+        $this->assertEquals(false, $this->singleFlight->setArrivalTime("10:00"));
     }
 }
