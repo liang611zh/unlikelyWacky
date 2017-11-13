@@ -1,5 +1,11 @@
 Changelog
 
+### #6 2017-11-12 - Gabriel
+- added Booking Search on welcome page
+- added function to search for flights in welcome controller and flight model
+- added Booking view 
+- edited CSS for new views
+
 ### #5 2017-11-11 - Kent Huang
 - added fleet page update function
 - added ajax for fleet page update

@@ -41,4 +41,75 @@ class Flight extends CSV_Model
 		}
 		return $unique;
 	}
+	
+	public function searchFlights($departure, $destination) {
+		
+		$searching = $this->all();
+		$searchresult = array();
+		$firstlegs = array();
+		
+		foreach($searching as $firstleg) {
+			if(!strcmp($firstleg->departureAirport, $departure)) {
+				if(!strcmp($firstleg->arrivalAirport, $destination)) {
+					$leg = array(
+					'leg' => array(json_decode(json_encode($firstleg))));
+					array_push($searchresult, $leg);
+				} else {
+					array_push($firstlegs, $firstleg);
+				}
+			}
+		}
+		
+		foreach($firstlegs as $firstleg) {
+			foreach($searching as $secondleg) {
+				if(!strcmp($firstleg->arrivalAirport, $secondleg->departureAirport) &&
+					(strtotime("tomorrow " . $secondleg->departureTime) - strtotime("tomorrow " . $firstleg->arrivalTime)) >= 1800 ) {
+					if(!strcmp($secondleg->arrivalAirport, $destination)) {
+						$leg = array();
+						/*
+						$leg['firstleg'] = array(json_decode(json_encode($firstleg), True));
+						$leg['secondleg'] = array(json_decode(json_encode($secondleg), True));
+						
+						array_push($leg, json_decode(json_encode($firstleg), True));
+						array_push($leg, json_decode(json_encode($secondleg), True));
+						*/
+						$leg = array(
+							'leg' => array(
+							json_decode(json_encode($firstleg)),
+							json_decode(json_encode($secondleg))
+							)
+						);
+						array_push($searchresult, $leg);
+					} else {
+						foreach($searching as $thirdleg) {
+							
+							if(!strcmp($secondleg->arrivalAirport, $thirdleg->departureAirport) &&
+								(strtotime("tomorrow " . $thirdleg->departureTime) - strtotime("tomorrow " . $secondleg->arrivalTime)) >= 1800 &&
+								!strcmp($thirdleg->arrivalAirport, $destination)) {
+									$leg = array();
+									/*
+									$leg['firstleg'] = array(json_decode(json_encode($firstleg), True));
+									$leg['secondleg'] = array(json_decode(json_encode($secondleg), True));
+									$leg['thirdleg'] = array(json_decode(json_encode($thirdleg), True));
+									
+									array_push($leg, json_decode(json_encode($firstleg), True));
+									array_push($leg, json_decode(json_encode($secondleg), True));
+									array_push($leg, json_decode(json_encode($thirdleg), True));
+									*/
+									$leg = array(
+										'leg' => array(
+										json_decode(json_encode($firstleg)),
+										json_decode(json_encode($secondleg)),
+										json_decode(json_encode($thirdleg))
+										)
+									);
+									array_push($searchresult, $leg);
+							}
+						}
+					}
+				}
+			}
+		}
+		return $searchresult;
+	}
 }
