@@ -21,6 +21,7 @@ class Welcome extends Application
 
 		if($role == ROLE_OWNER) {
             $this->data['pagebody'] = 'fleet/fleetindexx';
+            $this->data['add'] = $this->parser->parse('fleet/addnav',[], true);
         } else {
             $this->data['pagebody'] = 'fleet/fleetindex';
         }
