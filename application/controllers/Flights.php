@@ -38,6 +38,12 @@ class Flights extends Application {
 		$role = $this->session->userdata('userrole');
 
 		$this->data['pagetitle'] = 'Add New Schedule ('. $role . ')';
+
+        $newflight = $this ->flight->create();
+        // var_dump($newflight);
+        // return;
+
+        $this->session->set_userdata('flight', (object) $newflight);
 		$this->showit();
 	}
 
@@ -62,14 +68,27 @@ class Flights extends Application {
 	
 	public function submit()
     {
+
+        //TODO: validate 
+
         // setup for validation
         // retrieve & update data transfer buffer
-        $pa = (array) $this->session->userdata('pa');
+        $pa = (array) $this->session->userdata('flight');
         $pa = array_merge($pa, $this->input->post());
         $pa = (object) $pa;  // convert back to object
-        $this->session->set_userdata('pa', (object) $pa);
-        $pa->id = $this->flight->highest() + 1;
+        $this->session->set_userdata('flight', (object) $pa);
+
+        //var_dump($pa);
+        //var_dump($this->flight->highest());
+        $newindex = substr($this->flight->highest(),3) + 1;
+        $pa->id =  "U00" . $newindex;
+        $pa->key = $pa->id;
+
+        // var_dump($pa);
+        // return;
+        
         $this->flight->add($pa);
+
         redirect('/flights');
     }
 	//show for add
@@ -89,12 +108,12 @@ class Flights extends Application {
 			                  'ZST' => 'ZST',
 			                );
         $fields = array(
-            'id'  => form_label('id: ') . form_input('planeId', $pa->planeId,['class' => 'form-control']),
+            'id'  => form_label('Plane id: ') . form_input('planeId', $pa->planeId,['class' => 'form-control']),
             'fdepartureAirport'  => form_label('Departure Airport') . form_dropdown('departureAirport', $options, $pa->departureAirport,['class' => 'form-control']),
 			'fdepartureTime'  => form_label('Departure Time') . form_input('departureTime', $pa->departureTime,['class' => 'form-control']),
             'farrivalAirport'  => form_label('Arrival Airport') . form_dropdown('arrivalAirport', $options, $pa->arrivalAirport,['class' => 'form-control']),
 			'farrivalTime'  => form_label('Arrival Time') . form_input('arrivalTime', $pa->arrivalTime,['class' => 'form-control']),
-            'fsubmit'    => form_submit('submit', 'Submit',['class' => 'btn btn-primary btn-lg btn-block'])
+            'fsubmit'    => form_submit('submit', 'Add flight',['class' => 'btn btn-primary btn-lg btn-block'])
         );
         $this->data = array_merge($this->data, $fields);
 
@@ -104,6 +123,15 @@ class Flights extends Application {
 
 	public function delete($id) 
     {
+        if ($id == null) {
+            redirect('/flights');
+        }
+        if ($this->session->userdata('userrole') != ROLE_OWNER) {
+            redirect('/flights');
+        }
+        if(!$this->flight->exists($id)) {
+            redirect('/flights');
+        }
 
         $current = $this->flight->get($id);  
         if ($current != NULL) 
@@ -133,17 +161,34 @@ class Flights extends Application {
 			                  'ZST' => 'ZST',
 			                );
         $fields = array(
-            'id'  => form_label('id: ') . form_input('planeId', $pa->planeId,['class' => 'form-control']),
+            'id'  => form_label('Plane id: ') . form_input('planeId', $pa->planeId,['class' => 'form-control']),
             'fdepartureAirport'  => form_label('Departure Airport') . form_dropdown('departureAirport', $options, $pa->departureAirport,['class' => 'form-control']),
 			'fdepartureTime'  => form_label('Departure Time') . form_input('departureTime', $pa->departureTime,['class' => 'form-control']),
             'farrivalAirport'  => form_label('Arrival Airport') . form_dropdown('arrivalAirport', $options, $pa->arrivalAirport,['class' => 'form-control']),
 			'farrivalTime'  => form_label('Arrival Time') . form_input('arrivalTime', $pa->arrivalTime,['class' => 'form-control']),
-            'fsubmit'    => form_submit('submit', 'Submit',['class' => 'btn btn-primary btn-lg btn-block'])
+            'fsubmit'    => form_submit('submit', 'Update flight',['class' => 'btn btn-primary btn-lg btn-block'])
         );
         $this->data = array_merge($this->data, $fields);
 
-        $this->data['pagebody'] = 'addflights';
+        $this->data['pagebody'] = 'editflights';
         $this->render();
+    }
+
+        public function editsubmit()
+    {
+
+        //TODO: validate 
+
+        // setup for validation
+        // retrieve & update data transfer buffer
+        $pa = (array) $this->session->userdata('flightedit');
+        $pa = array_merge($pa, $this->input->post());
+        $pa = (object) $pa;  // convert back to object
+        $this->session->set_userdata('flightedit', (object) $pa);
+        
+        $this->flight->update($pa);
+
+        redirect('/flights');
     }
 
 
