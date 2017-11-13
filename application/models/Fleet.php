@@ -45,7 +45,13 @@ class Fleet extends CSV_Model
 
     //here to check the plane id
     public function id_check($id) {
-        var_dump($id[0]);
+        //var_dump($id[0]);
+        //check U and set size
+
+        if(empty($id)) {
+            $this->form_validation->set_message('id', 'The {field} field is required.');
+                return FALSE;
+        }
         if ($id[0] != 'U' || strlen($id) <= 1 || strlen($id) > 3)
         {
                 $this->form_validation->set_message('id', 'The {field} field should start with U and end with a number.The max length is 3');
@@ -53,6 +59,7 @@ class Fleet extends CSV_Model
         }
         else
         {
+            //check ends with a number
             $numafterU = (substr($id, 1));
 
             for ($i=0; $i<strlen($numafterU); $i++) {  

@@ -10,6 +10,7 @@ Changelog
 - added fleet page update function
 - added ajax for fleet page update
 - added fleet delete and add
+- added form validation rules for fleet model in model/fleet.php
 
 ### #4 2017-11-11 - Kabir Cahill
 - added fleet edit page
