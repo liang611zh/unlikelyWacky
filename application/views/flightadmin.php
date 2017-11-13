@@ -18,7 +18,7 @@
         <td>{departureTime}</td>
         <td>{arrivalAirport}</td>
         <td>{arrivalTime}</td>
-        <td><a href="flights/delete"><button class="btn btn-danger">Delete</button></a><a href="flights/edit/{id}"><button class="btn btn-info">Edit</button></a></td>
+        <td><a href="flights/delete/{id}"><button class="btn btn-danger">Delete</button></a><a href="flights/edit/{id}"><button class="btn btn-info">Edit</button></a></td>
       </tr>
       {/flights}
     </table>
