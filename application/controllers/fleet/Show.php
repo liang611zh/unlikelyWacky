@@ -4,46 +4,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Show extends Application
 {
-	/**
-	 * Show Page for the Fleet controller.
-	 * To display detail of the single clicked plane.
-	 *
-	 */
-	public function index($key)
-	{
+    /**
+     * Show Page for the Fleet controller.
+     * To display detail of the single clicked plane.
+     *
+     */
+    public function index($key)
+    {
         if ($this->session->userdata('userrole') == ROLE_OWNER) {
             redirect('/fleet/edit/' . $key);
         }
 
-		/*data of selected plane.*/
-		$plane = $this->fleet->get($key);
+        /*data of selected plane.*/
+        $plane = $this->fleet->get($key);
 
-		/*set pagetitle to the id of the plane.*/
-		$this->data['pagetitle'] = $plane->id;
+        /*set pagetitle to the id of the plane.*/
+        $this->data['pagetitle'] = $plane->id;
 
-		$this->data['pagebody'] = 'fleet/plane';
+        $this->data['pagebody'] = 'fleet/plane';
 
-		/*table opening*/
-		$table_open = '<table class="table table-striped table-hover">';
+        /*the table to display in the fleet/plane view*/
+        $this->data['singlePlaneTable'] = $this-> airplanesWacky->getPlaneTableById($key);
 
-		/*table content ;a row shown as :   propertyName : propertyValue*/
-		$table_content = "";
-
-		foreach($plane as $key => $val) {
-			$table_content .= "<tr>
-          							<th>$key</th>
-          							<td>$val</td>
-        						</tr>";
-		}
-
-		/*table closing*/
-		$table_close = '</table>'; 
-
-		/*the table to display in the fleet/plane view*/
-		$this->data['singlePlaneTable'] = $table_open .$table_content. $table_close;
-
-		$this->render(); 
-	}
+        $this->render(); 
+    }
 
     /**
      * Edit Page for the Fleet controller.
@@ -83,11 +67,13 @@ class Show extends Application
         if ( ! isset($this->data['error']))
             $this->data['error'] = '';
 
+            //var_dump($plane);
+
         
 
         $fields = array(
             'id'  => form_label('id: ') . form_input('id', $plane->id),
-            'recognizedPlane' => form_label('recognized plane:').form_dropdown('wackyid',$this->airplanesWacky->getAllid(), $plane->wackyid),
+            'recognizedPlane' => form_label('recognized plane:').form_dropdown('wackyid',$this->airplanesWacky->getAllid(), $plane->wackyid, 'id="wackyselect"'),
             // 'fmanufacturer'  => form_label('Manufacturer') . form_input('manufacturer', $plane->manufacturer),
             // 'fmodel'      => form_label('Model') . form_input(array('name'=>'size','value' => $plane->model, 'readonly'=>'readonly')),
             // 'fprice'     => form_label('Price') . form_input('price', $plane->price),
@@ -96,9 +82,15 @@ class Show extends Application
             // 'fcruise'     => form_label('Cruise') . form_input('cruise', $plane->cruise),
             // 'ftakeoff'     => form_label('Takeoff') . form_input('takeoff', $plane->takeoff),
             // 'fhourly'     => form_label('Hourly') . form_input('hourly', $plane->hourly),
-            // 'zsubmit'    => form_submit('submit', 'Update the plane'),
+             'zsubmit'    => form_submit('submit', 'Update the plane'),
         );
         $this->data = array_merge($this->data, $fields);
+
+
+        /*the table to display in the  view*/
+        $this->data['infoPlaneTable'] = $this-> airplanesWacky->getPlaneTableById($plane->wackyid);
+
+
 
         $this->data['pagebody'] = '/fleet/planeedit';
         $this->render();
@@ -107,33 +99,44 @@ class Show extends Application
     // handle form submission
     public function submit()
     {
+
         // setup for validation
         $this->load->library('form_validation');
         $this->form_validation->set_rules($this->fleet->rules());
 
+        //not valid
+        if(!$this->form_validation->run()) {
+            $this->alert('<strong>Validation errors!<strong><br>' . validation_errors(), 'danger');
+            $this->showit();
+            return;
+        }
+
+
+
+
         // retrieve & update data transfer buffer
         $plane = (array) $this->session->userdata('plane');
-        $plane = array_merge($plane, $this->input->post());
-        $plane = (object) $plane;  // convert back to object
-        $this->session->set_userdata('plane', (object) $plane);
 
-        // validate away
-        if ($this->form_validation->run())
-        {
-            if (empty($plane->id))
-            {
-                $plane->id = $this->fleet->highest() + 1;
-                $this->fleet->add($plane);
-                $this->alert('Plane ' . $plane->id . ' added', 'success');
-            } else
-            {
-                $this->fleet->update($plane);
-                $this->alert('Plane ' . $plane->id . ' updated', 'success');
-            }
-        } else
-        {
-            $this->alert('<strong>Validation errors!<strong><br>' . validation_errors(), 'danger');
-        }
+
+        //the seledted wacky plane
+        $postedwackyid = $this->input->post()['wackyid'];
+        $selecedwackyplane = (array) $this-> airplanesWacky->getPlaneById_Remove_id_key($postedwackyid);
+
+        $selecedwackyplane = array_merge($plane, $selecedwackyplane);
+
+        $selecedwackyplane["id"] = $this->input->post()['id'];
+
+        //$plane = array_merge($plane, $selecedwackyplane);
+
+        //SAVE IN CSV
+        $this->fleet->delete($plane['id']);
+        $this->fleet->add($selecedwackyplane);
+
+        //update session data 
+        $this->session->set_userdata('plane', (object) $selecedwackyplane);
+
+        $this->alert('Plane ' . $selecedwackyplane['id'] . ' updated', 'success');
+        $this->data['pagetitle'] = $selecedwackyplane['id'];
         $this->showit();
     }
 

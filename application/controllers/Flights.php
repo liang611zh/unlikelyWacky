@@ -38,8 +38,7 @@ class Flights extends Application {
 		$role = $this->session->userdata('userrole');
 
 		$this->data['pagetitle'] = 'Add New Schedule ('. $role . ')';
-		$this->data['pagebody'] = 'addflights';
-    	$this->render();
+		$this->showit();
 	}
 
 	public function edit()
@@ -49,6 +48,62 @@ class Flights extends Application {
 		$this->data['pagetitle'] = 'Add New Schedule ('. $role . ')';
 		$this->data['pagebody'] = 'addflights';
     	$this->render();
+	}
+
+public function submit()
+    {
+        // setup for validation
+        // retrieve & update data transfer buffer
+        $pa = (array) $this->session->userdata('pa');
+        $pa = array_merge($pa, $this->input->post());
+        $pa = (object) $pa;  // convert back to object
+        $this->session->set_userdata('pa', (object) $pa);
+
+        $pa->id = $this->flight->highest() + 1;
+        $this->flight->add($pa);
+        $this->index();
+    }
+
+private function showit()
+    {
+        $this->load->helper('form');
+        $pa = $this->session->userdata('flight');
+        $this->data['id'] = $pa->id;
+
+        // if no errors, pass an empty message
+        if ( ! isset($this->data['error']))
+            $this->data['error'] = '';
+
+        $fields = array(
+            'id'  => form_label('id: ') . form_input('planeId', $pa->planeId,['class' => 'form-control']),
+            'fdepartureAirport'  => form_label('Departure Airport') . form_input('departureAirport', $pa->departureAirport,['class' => 'form-control']),
+			'fdepartureTime'  => form_label('Departure Time') . form_input('departureTime', $pa->departureTime,['class' => 'form-control']),
+            'farrivalAirport'  => form_label('Arrival Airport') . form_input('arrivalAirport', $pa->arrivalAirport,['class' => 'form-control']),
+			'farrivalTime'  => form_label('Arrival Time') . form_input('arrivalTime', $pa->arrivalTime,['class' => 'form-control']),
+            'fsubmit'    => form_submit('submit', 'Submit',['class' => 'btn btn-primary btn-lg btn-block'])
+        );
+        $this->data = array_merge($this->data, $fields);
+
+        $this->data['pagebody'] = 'addflights';
+        $this->render();
+    }
+
+	public function delete() 
+    {
+		// retrieve & update data transfer buffer
+        $plane = (array) $this->session->userdata('flight');
+        $plane = array_merge($plane, $this->input->post());
+        $plane = (object) $plane;  // convert back to object
+        $this->session->set_userdata('flight', (object) $plane);
+       if (empty($plane->id))
+        	$this->flight->delete($plane);
+    	else
+    		 $this->flight->delete($plane);
+    }
+
+	function cancel() {
+    	$this->session->unset_userdata('flight');
+    	redirect('/flights');
 	}
 
 }
