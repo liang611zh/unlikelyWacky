@@ -9,6 +9,6 @@
             {farrivalTime}<br>
             {fsubmit}<br>
     </form>
-     <a href="cancel"><input type="buton" class="btn btn-danger btn-lg btn-block" value="Cancel"></a>
+     <a href="../canceledit"><input type="buton" class="btn btn-danger btn-lg btn-block" value="Cancel"></a>
   </div>
 </div>
