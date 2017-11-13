@@ -26,9 +26,9 @@ class Flights extends Application {
         if ($role == ROLE_OWNER){
             $this->data['pagination'] = $this->parser->parse('itemadd',[], true);
             $this->data['pagebody'] = 'flightadmin';
-        }elseif($role == ROLE_GUEST){
-            $this->data['pagination'] = $this->parser->parse('emptydiv',[], true);
-            $this->data['pagebody'] = 'flights';
+        }else{
+           // $this->data['pagination'] = $this->parser->parse('emptydiv',[], true);
+            $this->data['pagebody'] = 'flightsx';
         }
         $this->render();
     }
