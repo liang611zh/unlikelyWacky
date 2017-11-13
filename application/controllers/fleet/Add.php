@@ -99,7 +99,8 @@ class Add extends Application
 
                     // build a suitable error mesage
     private function alert($message) {
-        $this->load->helper('html');        
+        $this->load->helper('html');  
+        $this->data['pagetitle'] = "Error";       
         $this->data['error'] = heading($message,3);
     }
 
