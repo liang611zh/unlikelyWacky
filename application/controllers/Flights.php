@@ -58,10 +58,9 @@ public function submit()
         $pa = array_merge($pa, $this->input->post());
         $pa = (object) $pa;  // convert back to object
         $this->session->set_userdata('pa', (object) $pa);
-
         $pa->id = $this->flight->highest() + 1;
         $this->flight->add($pa);
-        $this->index();
+        redirect('/flights');
     }
 
 private function showit()
@@ -69,16 +68,21 @@ private function showit()
         $this->load->helper('form');
         $pa = $this->session->userdata('flight');
         $this->data['id'] = $pa->id;
-
         // if no errors, pass an empty message
         if ( ! isset($this->data['error']))
             $this->data['error'] = '';
-
+        //airport
+			$options = array(
+			                  'YYD'  => 'YYD',
+			                  'YPZ'    => 'YPZ',
+			                  'YDL'   => 'YDL',
+			                  'ZST' => 'ZST',
+			                );
         $fields = array(
             'id'  => form_label('id: ') . form_input('planeId', $pa->planeId,['class' => 'form-control']),
-            'fdepartureAirport'  => form_label('Departure Airport') . form_input('departureAirport', $pa->departureAirport,['class' => 'form-control']),
+            'fdepartureAirport'  => form_label('Departure Airport') . form_dropdown('departureAirport', $options, $pa->departureAirport,['class' => 'form-control']),
 			'fdepartureTime'  => form_label('Departure Time') . form_input('departureTime', $pa->departureTime,['class' => 'form-control']),
-            'farrivalAirport'  => form_label('Arrival Airport') . form_input('arrivalAirport', $pa->arrivalAirport,['class' => 'form-control']),
+            'farrivalAirport'  => form_label('Arrival Airport') . form_dropdown('arrivalAirport', $options, $pa->arrivalAirport,['class' => 'form-control']),
 			'farrivalTime'  => form_label('Arrival Time') . form_input('arrivalTime', $pa->arrivalTime,['class' => 'form-control']),
             'fsubmit'    => form_submit('submit', 'Submit',['class' => 'btn btn-primary btn-lg btn-block'])
         );
@@ -88,17 +92,13 @@ private function showit()
         $this->render();
     }
 
-	public function delete() 
+	public function delete($id) 
     {
-		// retrieve & update data transfer buffer
-        $plane = (array) $this->session->userdata('flight');
-        $plane = array_merge($plane, $this->input->post());
-        $plane = (object) $plane;  // convert back to object
-        $this->session->set_userdata('flight', (object) $plane);
-       if (empty($plane->id))
-        	$this->flight->delete($plane);
-    	else
-    		 $this->flight->delete($plane);
+
+        $current = $this->flight->get($id);  
+        if ($current != NULL) 
+            $this->flight->delete($id);
+		redirect('/flights');
     }
 
 	function cancel() {
