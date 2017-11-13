@@ -9,8 +9,6 @@
 class Flight extends CSV_Model
 {
     
-    private $search;
-
 	// Constructor
 	//load flights.csv
 	public function __construct()
@@ -112,7 +110,6 @@ class Flight extends CSV_Model
 				}
 			}
 		}
-        $this->search = $searchresult;
 		return $searchresult;
 	}
 }
