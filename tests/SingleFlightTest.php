@@ -1,6 +1,6 @@
 <?php
 
-require_once '../application/models/singlePlane.php';
+
 
 
 if (! class_exists('PHPUnit_Framework_TestCase')) {
