@@ -3,7 +3,7 @@ Changelog
 ### #5 2017-11-11 - Kent Huang
 - added fleet page update function
 - added ajax for fleet page update
-
+- added fleet delete and add
 
 ### #4 2017-11-11 - Kabir Cahill
 - added fleet edit page
