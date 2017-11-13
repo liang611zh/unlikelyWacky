@@ -90,8 +90,8 @@ class Show extends Application
         
 
         $fields = array(
-            'id'  => form_label('id: ') . form_input('id', $plane->id),
-            'recognizedPlane' => form_label('recognized plane:').form_dropdown('wackyid',$this->airplanesWacky->getAllid(), $plane->wackyid, 'id="wackyselect"'),
+            'id'  => form_label('id: ') . form_input('id', $plane->id,['class' => 'form-control']),
+            'recognizedPlane' => form_label('recognized plane:') . form_dropdown('wackyid',$this->airplanesWacky->getAllid(), $plane->wackyid, 'id="wackyselect"',['class' => 'form-control']),
             // 'fmanufacturer'  => form_label('Manufacturer') . form_input('manufacturer', $plane->manufacturer),
             // 'fmodel'      => form_label('Model') . form_input(array('name'=>'size','value' => $plane->model, 'readonly'=>'readonly')),
             // 'fprice'     => form_label('Price') . form_input('price', $plane->price),
@@ -100,7 +100,7 @@ class Show extends Application
             // 'fcruise'     => form_label('Cruise') . form_input('cruise', $plane->cruise),
             // 'ftakeoff'     => form_label('Takeoff') . form_input('takeoff', $plane->takeoff),
             // 'fhourly'     => form_label('Hourly') . form_input('hourly', $plane->hourly),
-             'zsubmit'    => form_submit('submit', 'Update the plane'),
+             'zsubmit'    => form_submit('submit', 'Update the plane',['class' => 'btn btn-success']),
         );
         $this->data = array_merge($this->data, $fields);
 
