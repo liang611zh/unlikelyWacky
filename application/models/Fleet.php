@@ -45,13 +45,24 @@ class Fleet extends CSV_Model
 
     //here to check the plane id
     public function id_check($id) {
-        if ($id == 'wrong')
+        var_dump($id[0]);
+        if ($id[0] != 'U' || strlen($id) <= 1 || strlen($id) > 3)
         {
-                $this->form_validation->set_message('id', 'The {field} field should start with U and must be unique.');
+                $this->form_validation->set_message('id', 'The {field} field should start with U and end with a number.The max length is 3');
                 return FALSE;
         }
         else
         {
+            $numafterU = (substr($id, 1));
+
+            for ($i=0; $i<strlen($numafterU); $i++) {  
+
+                if( ! is_numeric($numafterU[$i]) ) {
+                    $this->form_validation->set_message('id', 'The {field} field should start with U and end with a number.The max length is 3');
+                    return FALSE;
+                } 
+            }  
+
                 //echo "checking";
                 return TRUE;
         }
@@ -63,8 +74,6 @@ class Fleet extends CSV_Model
     public function recognizedPlane_check($wackyid) {
 
         $allid = $this->airplanesWacky->getAllid();
-        var_dump($wackyid);
-        var_dump($allid);
 
         foreach ($allid as $value) {
             if($wackyid == $value) {
@@ -75,4 +84,49 @@ class Fleet extends CSV_Model
                 
         return FALSE;
     }
+
+    //rules for add action
+    public function addrules()
+    {
+        $config = array(
+            ['field' => 'id', 'label' => 'id', 'rules' => array(
+                'required', 
+                //here specify the custom rule
+                //second field tells where to find the validation funcs
+                array('id', array($this->fleet, 'id_add_check'))
+                )
+             ],
+             ['field' => 'wackyid', 'label' => 'recognizedPlane', 'rules' => array( 
+                //here specify the custom rule
+                //second field tells where to find the validation funcs
+                array('wackyselect', array($this->fleet, 'recognizedPlane_check'))
+                )
+             ],
+        );
+        return $config;
+    }
+
+    //here to check the plane id; in the add action
+    public function id_add_check($id) {
+
+
+        if($this->fleet->id_check($id) == FALSE) {
+            $this->form_validation->set_message('id', 'The {field} field should start with U.');
+            return FALSE;
+        }
+
+
+        $bool = $this->fleet->exists($id)? FALSE : TRUE;
+        if ($bool == FALSE)
+        {
+            $this->form_validation->set_message('id', 'The {field} field exists.');
+            return FALSE;  
+        }
+        else
+        {
+                //echo "checking";
+                return TRUE;
+        }
+    }
+
 }
