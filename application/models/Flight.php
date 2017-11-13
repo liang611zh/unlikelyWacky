@@ -8,7 +8,7 @@
  */
 class Flight extends CSV_Model
 {
-
+    
 	// Constructor
 	//load flights.csv
 	public function __construct()
