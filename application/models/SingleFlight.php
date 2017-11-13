@@ -49,7 +49,9 @@ class SingleFlight extends Entity {
 	}
 
 	public function setDepartureTime($value) {
-        if(preg_match('/^([01]?[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?$/', $value) === 1) {
+        $hour = explode(":", $value)[0];
+        if((preg_match('/^([01]?[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?$/', $value) === 1) &&
+          $hour > 7) {
             $this->departureTime = $value;
             return true;
         } else {
@@ -68,7 +70,9 @@ class SingleFlight extends Entity {
 	}
 
 	public function setArrivalTime($value) {
-        if(preg_match('/^([01]?[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?$/', $value) === 1) {
+        $hour = explode(":", $value)[0];
+        if((preg_match('/^([01]?[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?$/', $value) === 1) &&
+           $hour < 10) {
             $this->arrivalTime = $value;
             return true;
         } else {
