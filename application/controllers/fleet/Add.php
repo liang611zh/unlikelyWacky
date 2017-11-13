@@ -66,7 +66,7 @@ class Add extends Application
 
         // setup for validation
         $this->load->library('form_validation');
-        $this->form_validation->set_rules($this->fleet->rules());
+        $this->form_validation->set_rules($this->fleet->addrules());
 
         //not valid
         if(!$this->form_validation->run()) {
