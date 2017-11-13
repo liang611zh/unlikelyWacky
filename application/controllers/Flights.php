@@ -41,16 +41,26 @@ class Flights extends Application {
 		$this->showit();
 	}
 
-	public function edit()
+	public function edit($id)
 	{
+		if ($id == null) {
+            redirect('/flights');
+        }
+        if ($this->session->userdata('userrole') != ROLE_OWNER) {
+            redirect('/flights');
+        }
 		$role = $this->session->userdata('userrole');
 
-		$this->data['pagetitle'] = 'Add New Schedule ('. $role . ')';
-		$this->data['pagebody'] = 'addflights';
-    	$this->render();
-	}
+        $flight = $this->flight->get($id);
 
-public function submit()
+        /*set pagetitle to the id of the plane.*/
+        $this->data['pagetitle'] = $flight->id;
+
+		$this->session->set_userdata('flightedit', $flight);
+		$this->editshowit();
+	}
+	
+	public function submit()
     {
         // setup for validation
         // retrieve & update data transfer buffer
@@ -62,8 +72,8 @@ public function submit()
         $this->flight->add($pa);
         redirect('/flights');
     }
-
-private function showit()
+	//show for add
+	private function showit()
     {
         $this->load->helper('form');
         $pa = $this->session->userdata('flight');
@@ -105,5 +115,36 @@ private function showit()
     	$this->session->unset_userdata('flight');
     	redirect('/flights');
 	}
+
+	//show for edit
+	private function editshowit()
+    {
+        $this->load->helper('form');
+        $pa = $this->session->userdata('flightedit');
+        $this->data['id'] = $pa->id;
+        // if no errors, pass an empty message
+        if ( ! isset($this->data['error']))
+            $this->data['error'] = '';
+        //airport
+			$options = array(
+			                  'YYD'  => 'YYD',
+			                  'YPZ'    => 'YPZ',
+			                  'YDL'   => 'YDL',
+			                  'ZST' => 'ZST',
+			                );
+        $fields = array(
+            'id'  => form_label('id: ') . form_input('planeId', $pa->planeId,['class' => 'form-control']),
+            'fdepartureAirport'  => form_label('Departure Airport') . form_dropdown('departureAirport', $options, $pa->departureAirport,['class' => 'form-control']),
+			'fdepartureTime'  => form_label('Departure Time') . form_input('departureTime', $pa->departureTime,['class' => 'form-control']),
+            'farrivalAirport'  => form_label('Arrival Airport') . form_dropdown('arrivalAirport', $options, $pa->arrivalAirport,['class' => 'form-control']),
+			'farrivalTime'  => form_label('Arrival Time') . form_input('arrivalTime', $pa->arrivalTime,['class' => 'form-control']),
+            'fsubmit'    => form_submit('submit', 'Submit',['class' => 'btn btn-primary btn-lg btn-block'])
+        );
+        $this->data = array_merge($this->data, $fields);
+
+        $this->data['pagebody'] = 'addflights';
+        $this->render();
+    }
+
 
 }
