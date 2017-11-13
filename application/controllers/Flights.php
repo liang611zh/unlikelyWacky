@@ -144,6 +144,13 @@ class Flights extends Application {
     	redirect('/flights');
 	}
 
+    
+
+    function canceledit() {
+        $this->session->unset_userdata('flightedit');
+        redirect('/flights');
+    }
+
 	//show for edit
 	private function editshowit()
     {
