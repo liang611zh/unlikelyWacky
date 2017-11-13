@@ -4,30 +4,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Show extends Application
 {
-	/**
-	 * Show Page for the Fleet controller.
-	 * To display detail of the single clicked plane.
-	 *
-	 */
-	public function index($key)
-	{
+    /**
+     * Show Page for the Fleet controller.
+     * To display detail of the single clicked plane.
+     *
+     */
+    public function index($key)
+    {
         if ($this->session->userdata('userrole') == ROLE_OWNER) {
             redirect('/fleet/edit/' . $key);
         }
 
-		/*data of selected plane.*/
-		$plane = $this->fleet->get($key);
+        /*data of selected plane.*/
+        $plane = $this->fleet->get($key);
 
-		/*set pagetitle to the id of the plane.*/
-		$this->data['pagetitle'] = $plane->id;
+        /*set pagetitle to the id of the plane.*/
+        $this->data['pagetitle'] = $plane->id;
 
-		$this->data['pagebody'] = 'fleet/plane';
+        $this->data['pagebody'] = 'fleet/plane';
 
-		/*the table to display in the fleet/plane view*/
-		$this->data['singlePlaneTable'] = $this-> airplanesWacky->getPlaneTableById($key);
+        /*the table to display in the fleet/plane view*/
+        $this->data['singlePlaneTable'] = $this-> airplanesWacky->getPlaneTableById($key);
 
-		$this->render(); 
-	}
+        $this->render(); 
+    }
 
     /**
      * Edit Page for the Fleet controller.
