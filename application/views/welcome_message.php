@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col">
-		<div class="jumbotron jumbotron-fluid">
+		<div class="jumbotron jumbotron-fluid mb-0">
 		<h2 class="display-3 text-center">Unlikely Wacky</h2>
 		<hr class="hr-4">
 		<h5 class="text-muted text-center"> - It is unlikely we will get you there - <h5>
@@ -8,7 +8,7 @@
 	</div>
 </div>
 <div class="row">
-		<div class="col-md-4">
+		<div class="col-md-4 mt-3">
 			<div class="card">
 				<div class="card-header text-center bg-info text-light lead">
 					<i class="fa fa-plane fa-fw" aria-hidden="true"></i>
@@ -20,12 +20,12 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-4">
+		<div class="col-md-4 mt-3">
 			<div class="card">
 				<div class="card-header text-center bg-primary text-light lead">
-					<i class="fa fa-plane fa-suitcase" aria-hidden="true"></i>
+					<i class="fa fa-suitcase fa-fw" aria-hidden="true"></i>
 					Airports We Service
-					<i class="fa fa-plane fa-suitcase" aria-hidden="true"></i>
+					<i class="fa fa-suitcase fa-fw" aria-hidden="true"></i>
 				</div>
 				<div class="card-body">
 				<table>
@@ -38,7 +38,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-4">
+		<div class="col-md-4 mt-3">
 			<div class="card">
 				<div class="card-header text-center bg-info text-light lead">
 					<i class="fa fa-plane fa-fw" aria-hidden="true"></i>
@@ -51,3 +51,4 @@
 			</div>
 		</div>
 </div>
+{booking}
